@@ -8,7 +8,8 @@ export function HistoricalPrice(data, units) {
             },
             marks: [
                 Plot.lineY(data, {x: "Date", y: "Price", tip: "x"}),
-                Plot.dot(data, Plot.pointerX({x: "Date", y: "Price", stroke: "red"})),
+                Plot.dot(data, Plot.pointerX({x: "Date", y: "Price", stroke: "red", r: 5})),
+                Plot.crosshairX(data, {x: "Date", y: "Price", color: "red"})
             ]
         })
 }
