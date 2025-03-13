@@ -2,6 +2,7 @@ import * as Plot from "npm:@observablehq/plot";
 
 export function HistoricalPrice(data, units) {
     return Plot.plot({
+            style: {fontSize: "11pt"},
             grid: true,
             y: {
                 label: `Price (${units})`
