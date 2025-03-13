@@ -9,6 +9,13 @@ import {HistoricalPrice} from './components/price.js';
 ```
 
 ```js
+const period = view(Inputs.radio(["5Y", "10Y", "20Y", "50Y", "Max"], {
+    label: html`<b>Period</b>`,
+    value: "50Y"
+  }));
+```
+
+```js
 const gold = FileAttachment("data/price-gold.csv").csv({typed: true});
 const usd = FileAttachment("data/price-usd.csv").csv({typed: true});
 const crude = FileAttachment("data/price-crude.csv").csv({typed: true});
@@ -16,20 +23,9 @@ const naturalgas = FileAttachment("data/price-naturalgas.csv").csv({typed: true}
 ```
 
 <div class="grid grid-cols-2">
-  <div class="card">
-    <h2>Gold</h2>
-    ${display(HistoricalPrice(gold, "USD / oz t"))}
-  </div>
-  <div class="card">
-    <h2>USD</h2>
-    ${display(HistoricalPrice(usd, "INR / USD"))}
-  </div>
-  <div class="card">
-    <h2>Crude</h2>
-    ${display(HistoricalPrice(crude, "USD / barrel"))}
-  </div>
-  <div class="card">
-    <h2>Natural Gas</h2>
-    ${display(HistoricalPrice(naturalgas, "USD / million Btu"))}
+    ${display(HistoricalPrice(gold, "Gold", "USD / oz t", period))}
+    ${display(HistoricalPrice(usd, "USD", "INR / USD", period))}
+    ${display(HistoricalPrice(crude, "Crude", "USD / barrel", period))}
+    ${display(HistoricalPrice(naturalgas, "Natural Gas", "USD / million Btu", period))}
   </div>
 </div>
